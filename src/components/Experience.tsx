@@ -43,7 +43,7 @@ export default function Experience() {
               className="relative sm:pl-14 mb-12 last:mb-0"
             >
               {/* Timeline dot */}
-              <div className="absolute left-2.5 top-2 w-4 h-4 rounded-full bg-primary-600 border-4 border-[#0a0a0f] hidden sm:block animate-glow" />
+              <div className="absolute left-2.5 top-2 w-4 h-4 rounded-full bg-primary-600 border-4 border-background hidden sm:block animate-glow" />
 
               <div className="p-6 sm:p-8 rounded-xl bg-slate-900/30 border border-slate-800/50 hover:border-primary-800/40 transition-all duration-300 card-glow">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
