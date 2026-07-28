@@ -11,6 +11,7 @@ import {
   FolderOpen,
 } from "lucide-react";
 import { projects } from "@/data/portfolio";
+import TiltCard from "@/components/TiltCard";
 
 const iconMap: Record<string, React.ReactNode> = {
   "git-branch": <GitBranch size={24} />,
@@ -52,8 +53,8 @@ export default function Projects() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group p-6 sm:p-8 rounded-xl bg-slate-900/30 border border-slate-800/50 hover:border-primary-800/40 transition-all duration-300 card-glow"
             >
+            <TiltCard className="group p-6 sm:p-8 rounded-xl bg-slate-900/30 border border-slate-800/50 hover:border-primary-800/40 transition-colors duration-300 card-glow">
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-600/20 to-primary-900/40 flex items-center justify-center text-primary-400 group-hover:from-primary-600/30 group-hover:to-primary-800/50 transition-all">
@@ -92,6 +93,7 @@ export default function Projects() {
                   </ul>
                 </div>
               </div>
+            </TiltCard>
             </motion.div>
           ))}
         </div>
