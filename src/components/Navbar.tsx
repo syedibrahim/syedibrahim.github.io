@@ -73,7 +73,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors"
           >
             <Terminal size={20} />
@@ -87,7 +87,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={`/${link.href}`}
                 className={`relative px-3 py-2 text-sm transition-colors font-mono ${
                   activeSection === link.href
                     ? "text-primary-400"
@@ -133,7 +133,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   onClick={() => setIsOpen(false)}
                   className="block px-3 py-2 text-sm text-slate-400 hover:text-primary-400 hover:bg-primary-950/50 rounded-lg transition-colors font-mono"
                 >

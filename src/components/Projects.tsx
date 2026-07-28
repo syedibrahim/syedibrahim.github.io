@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import {
   GitBranch,
   Layers,
@@ -9,6 +10,8 @@ import {
   Server,
   Activity,
   FolderOpen,
+  Sparkles,
+  ArrowRight,
 } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import TiltCard from "@/components/TiltCard";
@@ -19,6 +22,7 @@ const iconMap: Record<string, React.ReactNode> = {
   "shield-check": <ShieldCheck size={24} />,
   server: <Server size={24} />,
   activity: <Activity size={24} />,
+  sparkles: <Sparkles size={24} />,
 };
 
 export default function Projects() {
@@ -80,7 +84,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-1.5 mb-5">
                     {project.highlights.map((highlight, hIdx) => (
                       <li
                         key={hIdx}
@@ -91,6 +95,17 @@ export default function Projects() {
                       </li>
                     ))}
                   </ul>
+
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-mono text-primary-400 hover:text-primary-300 transition-colors"
+                  >
+                    Read case study
+                    <ArrowRight
+                      size={14}
+                      className="group-hover:translate-x-0.5 transition-transform"
+                    />
+                  </Link>
                 </div>
               </div>
             </TiltCard>
