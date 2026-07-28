@@ -37,7 +37,7 @@ export default function ProjectPage({
   if (!project) notFound();
 
   return (
-    <main className="relative min-h-screen">
+    <main id="main-content" className="relative min-h-screen">
       <Navbar />
       <article className="max-w-4xl mx-auto px-4 sm:px-6 pt-28 pb-24">
         <Link
