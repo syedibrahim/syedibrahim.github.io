@@ -16,7 +16,14 @@ async function fetchRepos(): Promise<Repo[]> {
   try {
     const res = await fetch(
       "https://api.github.com/users/syedibrahim/repos?sort=updated&per_page=30",
-      { headers: { Accept: "application/vnd.github+json" } }
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+          ...(process.env.GITHUB_TOKEN
+            ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+            : {}),
+        },
+      }
     );
     if (!res.ok) return [];
     const repos: Repo[] = await res.json();
