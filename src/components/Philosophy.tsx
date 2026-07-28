@@ -2,14 +2,23 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Brain, BarChart3, Target, TrendingUp, Sparkles } from "lucide-react";
-import { philosophyPoints } from "@/data/portfolio";
+import {
+  Brain,
+  BarChart3,
+  Target,
+  TrendingUp,
+  Sparkles,
+  Shield,
+  Compass,
+} from "lucide-react";
+import { philosophyPoints, focusAreas } from "@/data/portfolio";
 
 const iconMap: Record<string, React.ReactNode> = {
   brain: <Brain size={24} />,
   "bar-chart-3": <BarChart3 size={24} />,
   target: <Target size={24} />,
   "trending-up": <TrendingUp size={24} />,
+  shield: <Shield size={24} />,
 };
 
 export default function Philosophy() {
@@ -62,6 +71,35 @@ export default function Philosophy() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Compass size={18} className="text-accent-400" />
+            <h3 className="text-lg font-semibold text-slate-200">
+              Current focus
+            </h3>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {focusAreas.map((area) => (
+              <div
+                key={area.title}
+                className="p-5 rounded-xl bg-gradient-to-br from-accent-500/5 to-slate-900/30 border border-accent-600/20 hover:border-accent-500/40 transition-colors"
+              >
+                <p className="font-semibold text-slate-200 mb-2">
+                  {area.title}
+                </p>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  {area.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

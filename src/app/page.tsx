@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Metrics from "@/components/Metrics";
+import GithubActivity from "@/components/GithubActivity";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
@@ -14,9 +16,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <Metrics />
       <Skills />
       <Projects />
       <Experience />
+      <GithubActivity />
       <Philosophy />
       <Contact />
       <Footer />
