@@ -7,14 +7,22 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<"dark" | "light" | null>(null);
 
   useEffect(() => {
-    setTheme(
-      document.documentElement.classList.contains("light") ? "light" : "dark"
-    );
+    const readTheme = () =>
+      setTheme(
+        document.documentElement.classList.contains("light") ? "light" : "dark"
+      );
+    readTheme();
+    const observer = new MutationObserver(readTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
   }, []);
 
   const toggle = () => {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
+    const next =
+      document.documentElement.classList.contains("light") ? "dark" : "light";
     document.documentElement.classList.toggle("light", next === "light");
     localStorage.setItem("theme", next);
   };

@@ -176,8 +176,7 @@ export default function PipelineBackground() {
       mouse.y = -9999;
     };
 
-    resize();
-    if (reducedMotion) {
+    const drawStatic = () => {
       const colors = getColors();
       ctx.clearRect(0, 0, width, height);
       for (const node of nodes) {
@@ -186,16 +185,26 @@ export default function PipelineBackground() {
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();
       }
+    };
+
+    const onResize = () => {
+      resize();
+      if (reducedMotion) drawStatic();
+    };
+
+    resize();
+    if (reducedMotion) {
+      drawStatic();
     } else {
       draw();
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseleave", onMouseLeave);
     }
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", onResize);
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseleave", onMouseLeave);
     };
